@@ -68,9 +68,11 @@ describe("Testing the Discount Functions", function () {
   it("5. le client peut voir les remises", function() {
     const consoleSpy = sinon.spy(console, 'log');
     let d = new Discount();
-    let c = new Cart();
     let coupon = ['promo de mai', 10];
     list = [{article:"chaussette", price:40, discount: coupon, applied:true}, {article:"short", price:25, discount: coupon, applied:true}];
-    expect(d.showPriceDiscount(list)).
+    d.showPriceDiscount(list);
+    sinon.assert.calledWith(consoleSpy, 'Prix de votre chaussette après remise : 30 euros');
+    sinon.assert.calledWith(consoleSpy, 'Prix de votre short après remise : 15 euros');
+    consoleSpy.restore();
   })
 })
