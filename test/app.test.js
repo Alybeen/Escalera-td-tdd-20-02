@@ -55,4 +55,11 @@ describe("Testing the Discount Functions", function () {
     article = {article:"chaussette", price:40, discount:10, applied:true};
     expect(d.applyDiscount(article)).to.throw();
   })
+  it("4. un coupon peut etre utilisé pour plusieurs article", function() {
+    let d = new Discount();
+    let coupon = ['promo de mai', 10];
+    article_list = [{article:"chaussette", price:40, applied:false}, {article:"short", price:25, applied:false}]
+    res = [{article:"chaussette", price:40, discount: coupon, applied:false}, {article:"short", price:25, discount: coupon, applied:false}]
+    expect(d.addCoupon(article_list)).to.deep.equal(res)
+  })
 })
