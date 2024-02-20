@@ -58,8 +58,7 @@ class Discount {
         throw new Error('la remise a déjà été effectuée')
       }
       article.applied=true;
-      article.price - (article.discount);
-      return article
+      return article.price - (article.discount[1]);
     }
   }
 
@@ -84,9 +83,25 @@ class Discount {
   }
 
   addCoupon(coupon, article) {
-    return article.discount = coupon;
+    if(coupon.length>0 && coupon[1] && typeof coupon[1] ==='number') {
+      return article.discount = coupon;
+    } else {
+      throw new Error('erreur sur le coupon');
+    }
+
   }
 
+}
+
+class Article {
+  name="";
+  price=0;
+  applied= false;
+  constructor(name, price, applied) {
+    this.name="name";
+    this.price = price;
+    this.applied = false;
+  }
 }
 class Product {
   price =0;
@@ -142,4 +157,5 @@ module.exports = {
   Discount: Discount,
   Stock: Stock,
   Product: Product,
+  Article: Article,
 };

@@ -1,4 +1,5 @@
 const Discount = require("../src/app").Discount;
+const Article = require("../src/app").Article;
 const expect = require("chai").expect;
 
 /*describe("Testing the Cart Functions", function () {
@@ -36,9 +37,9 @@ describe("Testing the Discount Functions", function () {
 
   it("0. vérifier que le coupon a bien été appliqué", function() {
     let d = new Discount();
-    article = {article: "chaussette", price: 40, discount: 10, applied:false};
-    res = {article: "chaussette", price: 40, discount: 10, applied:true}
-    expect(d.applyDiscount(article)).to.deep.equal(res);
+    let coupon = ['promo de mai', 10];
+    article = {article: "chaussette", price: 40, discount: coupon, applied:false};
+    expect(d.applyDiscount(article)).to.equal(30);
   })
   it("1. vérifier que le coupon existe", function() {
     let d = new Discount();
