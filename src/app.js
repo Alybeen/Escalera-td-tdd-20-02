@@ -54,7 +54,9 @@ class Discount {
       if(article.discount >article.price) {
         throw new Error('la remise doit-être inférieure ou égale au prix du produit');
       }
-      return article.price - (article.discount);
+      article.applied=true;
+      article.price - (article.discount);
+      return article
     }
   }
 
