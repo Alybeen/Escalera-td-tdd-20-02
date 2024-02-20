@@ -53,6 +53,6 @@ describe("Testing the Discount Functions", function () {
   it("3. un coupon ne peut être utilisé qu'une seule fois sur un article", function() {
     let d = new Discount();
     article = {article:"chaussette", price:40, discount:150, applied:true};
-    expect(d.couponApplied(article)).to.true
+    expect(d.applyDiscount(article)).to.throw();
   })
 })
