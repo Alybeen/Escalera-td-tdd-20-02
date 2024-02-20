@@ -78,6 +78,15 @@ class Discount {
     }
   }
 
+  addCouponToList(coupon, list) {
+    res = list.map(article => this.addCoupon(coupon, article));
+    return res
+  }
+
+  addCoupon(coupon, article) {
+    return article.discount = coupon;
+  }
+
 }
 class Product {
   price =0;
