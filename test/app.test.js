@@ -1,6 +1,8 @@
 const Discount = require("../src/app").Discount;
 const Article = require("../src/app").Article;
+const Cart = require("../src/app").Cart;
 const expect = require("chai").expect;
+const sinon = require('sinon');
 
 /*describe("Testing the Cart Functions", function () {
   it("1. Add product in cart", function (done) {
@@ -60,7 +62,15 @@ describe("Testing the Discount Functions", function () {
     let d = new Discount();
     let coupon = ['promo de mai', 10];
     article_list = [{article:"chaussette", price:40, applied:false}, {article:"short", price:25, applied:false}];
-    res = [{article:"chaussette", price:40, discount: coupon, applied:false}, {article:"short", price:25, discount: coupon, applied:false}];
+    res = [{article:"chaussette", price:40, discount: ['promo de mai',10], applied:false}, {article:"short", price:25, discount: ['promo de mai',10], applied:false}];
     expect(d.addCouponToList(coupon, article_list)).to.equal(res);
+  })
+  it("5. le client peut voir les remises", function() {
+    const consoleSpy = sinon.spy(console, 'log');
+    let d = new Discount();
+    let c = new Cart();
+    let coupon = ['promo de mai', 10];
+    list = [{article:"chaussette", price:40, discount: coupon, applied:true}, {article:"short", price:25, discount: coupon, applied:true}];
+    expect(d.showPriceDiscount(list)).
   })
 })
