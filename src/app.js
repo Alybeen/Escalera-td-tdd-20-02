@@ -65,6 +65,13 @@ class Discount {
       return false
     }
   }
+  couponApplied(article) {
+    if(article.applied) {
+      return true
+    } else {
+      return false
+    }
+  }
 
 }
 class Product {
