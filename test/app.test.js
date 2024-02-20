@@ -69,8 +69,10 @@ describe("Testing the Discount Functions", function () {
     const consoleSpy = sinon.spy(console, 'log');
     let d = new Discount();
     let coupon = ['promo de mai', 10];
-    list = [{article:"chaussette", price:40, discount: coupon, applied:true}, {article:"short", price:25, discount: coupon, applied:true}];
-    d.showPriceDiscount(list);
+    list = [{article:"chaussette", price:40, discount: coupon, applied:false}, {article:"short", price:25, discount: coupon, applied:false}];
+    let new_list = list.map(art => d.addNewPrice(art));
+    console.log(new_list)
+    d.showPriceDiscount(new_list);
     sinon.assert.calledWith(consoleSpy, 'Prix de votre chaussette après remise : 30 euros');
     sinon.assert.calledWith(consoleSpy, 'Prix de votre short après remise : 15 euros');
     consoleSpy.restore();

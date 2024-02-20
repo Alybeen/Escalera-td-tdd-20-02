@@ -55,10 +55,19 @@ class Discount {
         throw new Error('la remise doit-être inférieure ou égale au prix du produit');
       }
       if(article.applied) {
-        throw new Error('la remise a déjà été effectuée')
+        throw new Error('la remise a déjà été effectuée');
       }
       article.applied=true;
       return article.price - (article.discount[1]);
+    }
+  }
+
+  addNewPrice(article) {
+    if (newPrice !== undefined) {
+      article.newPrice = newPrice;
+      return article;
+    } else {
+      throw new Error('problème new price');
     }
   }
 
@@ -89,6 +98,9 @@ class Discount {
       throw new Error('erreur sur le coupon');
     }
 
+  }
+  showPriceDiscount(list) {
+    list.forEach(it = console.log('Prix de votre'+ it.article +'après remise : ' + it.newPrice +'euros'))
   }
 
 }
