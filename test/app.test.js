@@ -36,7 +36,7 @@ describe("Testing the Discount Functions", function () {
 
   it("0. vérifier que le coupon a bien été appliqué", function() {
     let d = new Discount();
-    article = {article: "chaussette", price: 40, discount: 10};
+    article = {article: "chaussette", price: 40, discount: 10, applied:false};
     res = {article: "chaussette", price: 40, discount: 10, applied:true}
     expect(d.applyDiscount(article)).to.deep.equal(res);
   })
@@ -52,7 +52,7 @@ describe("Testing the Discount Functions", function () {
   })
   it("3. un coupon ne peut être utilisé qu'une seule fois sur un article", function() {
     let d = new Discount();
-    article = {article:"chaussette", price:40, discount:150, applied:true};
+    article = {article:"chaussette", price:40, discount:10, applied:true};
     expect(d.applyDiscount(article)).to.throw();
   })
 })
